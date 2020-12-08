@@ -29,6 +29,7 @@
     <main>
       <div class="main-left">
         <div class="headline">
+          <h2>Take a shot on your loan game.</h2>
           <h2>Own your loan game.</h2>
           <h3>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
@@ -36,6 +37,24 @@
             perspiciatis, illo laborum odio dicta fuga unde doloribus et magni
             libero eius.
           </h3>
+          <h3>Find out if you qualify.</h3>
+          <div class="modal-open">
+            <button class="modal-btn">Take Quiz</button>
+          </div>
+          <div class="modal-box">
+            <div class="modal-form">
+              <span class="modal-close">&times;</span>
+              <div class="questions">
+                <div class="question"></div>
+              </div>
+              <div class="back" style="display:none">
+                <a onclick="alert('back')">Back</a>
+              </div>
+              <div class="done" style="display:none">
+                <h2>Done!</h2>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="main-right">
@@ -119,6 +138,12 @@
     </div>
     <footer>
       <div>Links / Disclaimer / Copyright</div>
+      <p>Garron Ma DBA Loan Dunk, NMLS #1969903</p>
     </footer>
+    <script>
+      const handleSelect = ({order, i}) => onSelect({ order, option: parseFloat(event.target.value.replace(/,/g, '')), i });
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/places.js/1.19.0/places.min.js"></script> -->
+    <script src="./index.js"></script>
   </body>
 </html>
