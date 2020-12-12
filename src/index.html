@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css2?family=Merriweather:300italic,wght@0,300;0,400;0,900;1,300&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Loan Dunk</title>
+  </head>
+  <body>
+    <header>
+      <div class="margin-left">
+        <img src="assets/logo.png" />
+        <h1>LOAN DUNK</h1>
+      </div>
+    </header>
+    <main>
+      <div class="main-left">
+        <div class="headline">
+          <!-- <h2>Take a shot on your loan game.</h2> -->
+          <h2>Own your loan game.</h2>
+          <h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+            laudantium vel velit recusandae rerum ad itaque harum commodi
+            perspiciatis, illo laborum odio dicta fuga unde doloribus et magni
+            libero eius.
+          </h3>
+          <h3>Find out if you qualify.</h3>
+          <div id="app"></div>
+        </div>
+      </div>
+      <div class="main-right">
+        <div class="bg-circle"></div>
+        <img class="hero" src="assets/hero.png" />
+      </div>
+    </main>
+    <!-- <div class="main-bg-2"></div> -->
+    <div class="steps">
+      <div class="xo">
+        <div class="steps-title"><h2>Our triple threat approach.</h2></div>
+        <img src="./assets/plan.png" />
+      </div>
+      <div class="xo-list">
+        <ul>
+          <li>
+            <h2 class="step-one">Apply first.</h2>
+            <p>We call it easy buckets. Straightforward and painless.</p>
+          </li>
+          <li>
+            <h2>Strategize a plan.</h2>
+            <p>
+              Let's draw it up. We discuss your options. We will coach you
+              through it. Draw out the Xs and Os gameplan best suited for you.
+            </p>
+          </li>
+          <li>
+            <h2>Execute the play.</h2>
+            <p>
+              We stay the course. No matter what happens or how long. We're with
+              you every step of the way.
+            </p>
+            <p>
+              Slam it home! Sign off with the finishing touch and we celebrate
+              your win!
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="featured">
+      <h2>Meet your teammate.</h2>
+      <div class="featured-man">
+        <img class="loan-me" src="assets/loan-me-v1.png" />
+      </div>
+      <h3>Hi, I'm Garron.</h3>
+      <p>
+        Having been on both sides of the loan shopping table, I know how it
+        feels to be beyond your depth when it comes to buying or refinancing
+        your home.
+        <br /><br />
+        Loan Dunk serves to simplify this unnecessarily stressful process.
+        <br /><br />
+        To begin, get <a href="#">started</a> below.
+      </p>
+    </div>
+    <div class="start-app">
+      <div class="form">
+        <h2>Ball's in your court.</h2>
+        <form>
+          <div>
+            <label>Legal Name<br /><input type="text" /></label>
+          </div>
+          <div>
+            <label>Email<br /><input type="text" /></label>
+          </div>
+          <div>
+            <label
+              >What is your loan goal?<br /><input type="text"
+            /></label>
+          </div>
+          <div>
+            <label
+              >Personal access code (PAC)<br /><input type="text"
+            /></label>
+          </div>
+          <button type="submit">I'm interested</button>
+        </form>
+      </div>
+      </div>
+    </div>
+    <footer>
+      <div>Links / Disclaimer / Copyright</div>
+      <p>Garron Ma DBA Loan Dunk, NMLS #1969903</p>
+    </footer>
+    <script>
+      const handleSelect = ({order, i}) => onSelect({ order, option: parseFloat(event.target.value.replace(/,/g, '')), i });
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/places.js/1.19.0/places.min.js"></script> -->
+    <script src="./index.js"></script>
+    <div id="app"></div>
+  </body>
+</html>
