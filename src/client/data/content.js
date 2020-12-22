@@ -11,7 +11,7 @@ const formContent = {
   2: {
     order: 2,
     question: "Are you a first-time home buyer?",
-    subtext: "If so, you may qualify for low down payment loan.",
+    subtext: "If so, you may qualify for a low down payment loan.",
     type: "button",
     options: ["Yes", "No"],
   },
@@ -62,9 +62,9 @@ const formContent = {
         ask: "Enter the city or zip code of desired area.",
       },
     ],
-    subtext: "",
+    subtext: "Please enter it below.",
     type: "search",
-    options: ["Start typing..."],
+    options: ["Start typing here..."],
   },
   6: {
     order: 6,
@@ -81,7 +81,7 @@ const formContent = {
     ],
     subtext: "Please give an estimate.",
     type: "select",
-    options: ["Please select", ...range(100000, 1500000, 5000)],
+    options: ["Please select", ...range(100000, 5000000, 5000)],
   },
   7: {
     order: 7,
@@ -95,7 +95,7 @@ const formContent = {
     question: "How are you currently employed?",
     subtext: "Please answer as of your last 2 years.",
     type: "button",
-    options: ["Full-time", "Part-time", "Self-employed", "Other"],
+    options: ["Full-time", "Part-time", "Self-employed", "Contract"],
   },
   9: {
     order: 9,
@@ -117,7 +117,7 @@ const formContent = {
     order: 11,
     question: "Will you have a co-borrower?",
     subtext:
-      "Consider one for possibly better rates and increased loan amount.",
+      "Consider one for possibly better rates and/or an increased loan amount.",
     type: "button",
     options: ["Yes", "No"],
   },
@@ -127,7 +127,7 @@ const formContent = {
     subtext:
       "This may include cash, personal property, retirement & brokerage funds, and business equity.",
     type: "select",
-    options: ["Please select", ...range(0, 1000000, 10000)],
+    options: ["Please select", ...range(0, 5000000, 5000)],
   },
   13: {
     order: 13,
@@ -140,7 +140,7 @@ const formContent = {
   14: {
     order: 14,
     question: "Have you located your desired property?",
-    subtext: "",
+    subtext: "Please select an option below.",
     type: "button",
     options: ["Yes", "No"],
   },
@@ -157,7 +157,7 @@ const formContent = {
         ask: "What kind of property are you looking for?",
       },
     ],
-    subtext: "",
+    subtext: "Please select an option.",
     type: "button",
     options: ["Single Family", "Townhouse", "Condominium", "Multi-Unit"],
   },
@@ -170,7 +170,7 @@ const formContent = {
   },
   17: {
     order: 17,
-    question: "Do you have an offer accepted or in contract?",
+    question: "Do you have an offer accepted or under contract?",
     type: "button",
     subtext: "",
     options: ["Yes", "No"],
@@ -186,7 +186,7 @@ const formContent = {
     order: 19,
     reference: 6,
     question: "How much are you looking to borrow?",
-    subtext: "",
+    subtext: "Please give an estimate if not sure.",
     type: "select",
     options: (ref) => ["Please select", ...range(0, ref, 10000)],
   },
@@ -237,7 +237,7 @@ const formContent = {
     order: 26,
     question: "Do you have any additional loans on the property?",
     type: "button",
-    subtext: "Such as a second mortgage or line of equity.",
+    subtext: "Such as a second mortgage or home equity line of credit (HELOC).",
     options: ["Yes", "No"],
   },
   27: {
@@ -253,7 +253,40 @@ const formContent = {
     question: "What year did you purchase the property?",
     subtext: "",
     type: "select",
-    options: ["Please select", ...range(1920, 2020, 1)],
+    options: ["Please select", ...range(2020, 1920, -1)],
+  },
+  29: {
+    order: 29,
+    question: "How will you use this property?",
+    subtext: "Please select an option.",
+    type: "button",
+    options: [
+      "Primary Residence",
+      "Secondary Residence",
+      "Investment Property",
+      "Other",
+    ],
+  },
+  30: {
+    order: 30,
+    question: "What is your current interest rate?",
+    subtext: "",
+    type: "select",
+    options: ["Please select", ...range(15, 1, -1)],
+  },
+  31: {
+    order: 31,
+    question: "What is your full legal name?",
+    subtext: "",
+    type: "text",
+    options: [],
+  },
+  32: {
+    order: 32,
+    question: "Where can we email your quiz score?",
+    subtext: "",
+    type: "email",
+    options: [],
   },
 };
 

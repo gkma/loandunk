@@ -1,7 +1,10 @@
+import data from "./content";
+
 export default (type) => {
+  let questionSequence = [];
   switch (type) {
     case "buy":
-      return [
+      questionSequence = [
         1,
         2,
         11,
@@ -9,9 +12,9 @@ export default (type) => {
         14,
         5,
         15,
+        29,
         6,
         19,
-        13,
         7,
         16,
         8,
@@ -22,9 +25,12 @@ export default (type) => {
         18,
         3,
         20,
+        31,
+        32,
       ];
+      break;
     case "refi":
-      return [
+      questionSequence = [
         1,
         3,
         7,
@@ -45,8 +51,15 @@ export default (type) => {
         12,
         16,
         20,
+        31,
+        32,
       ];
+      break;
     default:
-      return [];
+      questionSequence = [1];
   }
+
+  return questionSequence.map((q) => {
+    return data[q];
+  });
 };
