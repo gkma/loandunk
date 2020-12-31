@@ -377,6 +377,11 @@ main div {
   font-weight: lighter;
 }
 
+.gm-name,
+.gm-nmls {
+  margin: 1rem 0;
+}
+
 .vert-line {
   border-left: 3px solid black;
   color: #fff;

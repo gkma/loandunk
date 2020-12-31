@@ -3,24 +3,30 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from "react";
 
-// import formContent from "./data/content";
 import Inputs from "./components/Inputs";
-import flowSequence from "./data/sequence";
-
 import Checks from "./components/Checks";
-
-// import { format } from "./helpers";
+import flowSequence from "./data/sequence";
 
 const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [displayChecks, setDisplayChecks] = useState();
   const [displayThankYou, setDisplayThankYou] = useState(false);
-  const [startQuiz, setStartQuiz] = useState("Take Quiz");
+  // const [startQuiz, setStartQuiz] = useState("Take Quiz");
   const [onQuestion, setOnQuestion] = useState(0);
   const [loanType, setLoanType] = useState("");
   const [sequence, setSequence] = useState([]);
   const [prompt, setPrompt] = useState();
   const [userProgress, setUserProgress] = useState({});
+
+  useEffect(() => {
+    const handleEscape = (ev) => {
+      if (ev.key === "Escape") setDisplayModal(false);
+    };
+
+    window.addEventListener("keyup", handleEscape);
+
+    return () => window.removeEventListener("keyup", handleEscape);
+  }, []);
 
   useEffect(() => {
     const firstQuestion = flowSequence(loanType)[0];
@@ -30,6 +36,7 @@ const App = () => {
       setUserProgress({
         ...userProgress,
         14: {
+          question: "Have you located a property to buy?",
           answer: "Yes",
         },
       });
@@ -41,13 +48,11 @@ const App = () => {
       const type = ["buy", "refi"][userProgress[1].i];
       setLoanType(type);
       setSequence(flowSequence(type));
-      setStartQuiz("Resume Quiz");
-    } else if (onQuestion === 20) setStartQuiz("See Your Match");
+      // setStartQuiz("Resume Quiz");
+    }
+    // else if (onQuestion === 20) setStartQuiz("See Your Match");
 
-    if (
-      sequence.length &&
-      sequence.length === Object.keys(userProgress).length
-    ) {
+    if (onQuestion === 22) {
       setPrompt(null);
       setDisplayChecks(true);
     }
@@ -109,7 +114,7 @@ const App = () => {
           className="modal-btn"
           onClick={() => setDisplayModal(!displayModal)}
         >
-          {startQuiz}
+          Take Quiz
         </button>
       </div>
       {displayModal && (
@@ -128,6 +133,7 @@ const App = () => {
                     <h2>Question {onQuestion + 1} of 22</h2>
                     <h3>{prompt.question}</h3>
                     <h5>{prompt.subtext}</h5>
+                    {/* <h6 className="error-default">Please select an option</h6> */}
                     <Inputs
                       content={{
                         type: prompt.type,
@@ -141,9 +147,7 @@ const App = () => {
                 {displayChecks && <Checks toggle={setDisplayChecks} />}
                 {displayThankYou && (
                   <div className="featured">
-                    <h1 className="feat-h1">
-                      High five for taking the first step!
-                    </h1>
+                    <h1 className="feat-h1">You passed!</h1>
                     <h4 className="feat-h4">Your mortgage teammate is:</h4>
                     <div className="featured-man">
                       <img
@@ -152,13 +156,15 @@ const App = () => {
                         alt=""
                       />
                     </div>
-                    <h4>Garron Ma</h4>
+                    <h4 className="feat-h4 gm-name">Garron Ma</h4>
+                    <h4 className="feat-h4 gm-nmls">NMLS #1969903</h4>
+                    <h6 className="gm-msg">
+                      &quot;I&apos;m thrilled to partner with you. Let&apos;s
+                      get to work!&quot;
+                    </h6>
                     <p>
-                      Having been on both sides of the loan shopping table, I
-                      know how it feels to be beyond your depth when it comes to
-                      buying or refinancing your home. I cannot wait to work
-                      with you. Youll be receiving an email from me within 24
-                      hrs.
+                      You&apos;ll be receiving an introductory email from me
+                      shortly.
                     </p>
                   </div>
                 )}

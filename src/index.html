@@ -2,9 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,900;1,300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+    minimum-scale=1.0"" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,900;1,300&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap"
       rel="stylesheet"
@@ -18,33 +22,32 @@
   </head>
   <body>
     <header>
-      <div class="margin-left">
+      <div class="header-left">
         <img src="assets/logo.png" />
         <h1>LOAN DUNK</h1>
       </div>
     </header>
     <main>
-      <div class="main-left">
-        <div class="headline">
-          <!-- <h2>Take a shot on your loan game.</h2> -->
-          <h2>Own your loan game.</h2>
-          <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-            laudantium vel velit recusandae rerum ad itaque harum commodi
-            perspiciatis, illo laborum odio dicta fuga unde doloribus et magni
-            libero eius.
-          </h3>
-          <h3>Find out if you qualify.</h3>
-          <div id="app"></div>
+      <div class="mains">
+        <div class="main-left">
+          <div class="headline">
+            <h2>Own your loan game.</h2>
+            <h3>
+              It&apos;s never been simpler to make your next home move. We draw
+              up the Xs & Os for you.
+            </h3>
+            <h3>Get started by taking our quiz.</h3>
+            <div id="app"></div>
+          </div>
         </div>
-      </div>
-      <div class="main-right">
-        <div class="bg-circle"></div>
-        <img class="hero" src="assets/ld-hero.png" />
+        <div class="main-right">
+          <div class="bg-circle"></div>
+          <img class="hero" src="assets/ld-hero.png" />
+        </div>
       </div>
     </main>
     <!-- <div class="main-bg-2"></div> -->
-    <div class="steps">
+    <!-- <div class="steps">
       <div class="xo">
         <div class="steps-title"><h2>Our triple threat approach.</h2></div>
         <img src="./assets/plan.png" />
@@ -100,16 +103,21 @@
         </form>
       </div>
       </div>
-    </div>
+    </div> -->
     <footer>
-      <div>Links / Disclaimer / Copyright</div>
-      <p>Garron Ma DBA Loan Dunk, NMLS #1969903</p>
+      <!-- <div>Links / Disclaimer / Copyright</div> -->
+      <p>&copy; 2020 Loan Dunk Mortgage Services. NMLS #1969903</p>
     </footer>
-    <script>
-      const handleSelect = ({order, i}) => onSelect({ order, option: parseFloat(event.target.value.replace(/,/g, '')), i });
-    </script>
+    <!-- <script>
+      const handleSelect = ({ order, i }) =>
+        onSelect({
+          order,
+          option: parseFloat(event.target.value.replace(/,/g, "")),
+          i,
+        });
+    </script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/places.js/1.19.0/places.min.js"></script> -->
-    <script src="./index.js"></script>
-    <div id="app"></div>
+    <!-- <script src="./index.js"></script> -->
+    <!-- <div id="app"></div> -->
   </body>
 </html>
