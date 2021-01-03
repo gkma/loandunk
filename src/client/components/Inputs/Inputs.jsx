@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import AlgoliaPlaces from "algolia-places-react";
 
 const Inputs = ({ content, onSelect }) => {
   const [selected, setSelected] = useState(undefined);
   const [errors, setErrors] = useState({
     emptyField: true,
   });
+  const [location, setLocation] = useState("");
   const [text, setText] = useState("");
   const { type, options, order } = content;
   let output;
@@ -34,22 +36,38 @@ const Inputs = ({ content, onSelect }) => {
       break;
     }
     case "search": {
-      output = (
+      const input = (
         <ul className="options">
           {options.map((option, i) => {
             return (
               <li key={`option-${i + 1}`} className={`option option-${i + 1}`}>
-                <input
-                  type={type}
-                  className="auto-search"
-                  onClick={() => onSelect({ order, option, i })}
-                  placeholder={option}
-                  value={option}
+                <AlgoliaPlaces
+                  placeholder="Enter location here."
+                  options={{
+                    appId: "plZEVQE867P4",
+                    apiKey: "031a6f11a85781789390cc4bf2f699e3",
+                  }}
+                  onChange={({ suggestion }) => setLocation(suggestion.value)}
                 />
               </li>
             );
           })}
         </ul>
+      );
+
+      output = (
+        <form
+          onSubmit={(ev) => {
+            ev.preventDefault();
+            if (location === "") alert("Please enter a location.");
+            else {
+              onSelect({ order, option: location, i: 0 });
+            }
+          }}
+        >
+          <label htmlFor="name">{input}</label>
+          <input type="submit" value="Next" className="text-submit" />
+        </form>
       );
       break;
     }

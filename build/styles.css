@@ -639,12 +639,12 @@ main {
   }
 
   .modal-box {
-    padding-top: 40px;
+    padding-top: 50px;
   }
 
   .modal-form {
     max-width: 90%;
-    max-height: 95%;
+    /* max-height: 95%; */
     height: auto;
   }
 
@@ -674,6 +674,10 @@ main {
 
   .modal-form .question .options {
     display: block;
+  }
+
+  .auto-search {
+    height: auto;
   }
 
   .feat-h1 {
@@ -759,7 +763,6 @@ main {
   }
 
   .main-right {
-    /* background: antiquewhite; */
   }
 
   #app {
@@ -1044,4 +1047,8 @@ main {
 
 footer p {
   text-align: center;
+}
+
+.ap-name {
+  color: #000;
 }

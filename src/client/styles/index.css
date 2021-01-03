@@ -3,8 +3,8 @@ body {
 }
 
 header {
-  margin: 20px 0;
-  /* max-width: 80%; */
+  margin-top: 50px;
+  margin-left: 10vw;
 }
 
 header div img {
@@ -14,7 +14,6 @@ header div img {
 
 header div h1 {
   display: inline;
-  /* font-family: "Bebas Neue", cursive; */
   font-family: "Roboto Condensed", sans-serif;
   font-size: 2rem;
   vertical-align: middle;
@@ -32,19 +31,6 @@ header div h1 {
   z-index: -1;
 }
 
-.main-bg-2 {
-  /* background-image: url("./assets/hollywood.jpg"); */
-  /* background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.65),
-    rgba(175, 160, 177, 0.75)
-  ); */
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  z-index: -1;
-}
-
 main {
   background-image: linear-gradient(
     to right,
@@ -52,41 +38,30 @@ main {
     rgba(147, 35, 158, 0.75)
   );
   display: flex;
-  /* flex-direction: column; */
-  margin: 25px auto 150px;
+  margin: 25px auto;
+}
+
+.mains {
+  display: flex;
+  margin: auto;
+  width: 75%;
   height: 600px;
 }
 
-main div {
-  flex: 1;
-}
-
 .main-left {
+  flex: 3;
   color: bisque;
-  /* margin: 100px; */
-  /* max-width: 50%; */
-  /* padding: 5rem 10rem; */
-  /* font-family: "Roboto Condensed", sans-serif; */
-  /* font-weight: 400; */
-  /* margin-left: 150px;
-  margin-top: 50px; */
 }
 
 .headline {
-  margin-right: 50px;
-  padding: 150px 0px 150px 250px;
-  /* height: 50%; */
-  /* margin: auto; */
-  text-align: center;
-  /* vertical-align: middle; */
-  width: 85%;
+  margin-top: 25%;
 }
 
 .main-left h2 {
   font-family: "Merriweather", "Times New Roman", Times, serif;
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 400;
-  margin: 0;
+  margin: 1rem 0 2rem;
   text-align: left;
 }
 
@@ -99,13 +74,232 @@ main div {
   line-height: 1.5;
   text-align: left;
   margin-top: 10px;
-  width: 80%;
+  width: 90%;
 }
 
-.modal-open {
-  margin: 2rem 0;
+.hero {
+  /* height: 325px; */
+  position: relative;
+  bottom: 125px;
+  /* border-radius: 5px; */
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  /* height: 300px; */
+  /* position: relative; */
+  /* bottom: 300px; */
+  /* padding: 50px 0 25px 25px; */
+  /* width: 100%; */
+  /* margin-top: 6rem; */
+}
+
+.bg-circle {
+  background-color: gold;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  /* margin-top: 25px; */
+  position: relative;
+  top: 75px;
+  left: 50px;
+}
+
+.modal-box {
+  /* display: none; */
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding-top: 130px;
+  padding-bottom: 50vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 579px;
+}
+
+.modal-form {
+  background-color: goldenrod;
+  border: 2px solid navajowhite;
+  position: relative;
+  margin: 0 auto;
+  max-width: 50%;
+  animation: animatetop 0.4s;
+  height: 600px;
+}
+
+.modal-form .questions {
+  display: flex;
+  padding: 8% 4%;
+  /* width: 90%; */
+  margin: auto;
+  /* padding-left: 5rem; */
+  justify-content: center;
+  /* height: 100%; */
+}
+
+.modal-form .questions h2 {
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0;
   text-align: left;
+}
+
+.modal-form .questions h3 {
+  color: #fff;
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+  font-weight: 300;
+  font-size: 40px;
+  /* font-style: italic; */
+  font-weight: lighter;
+  line-height: 1.5;
+  text-align: left;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.modal-form .questions h5 {
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+  font-weight: 200;
+  font-size: 20px;
+  /* font-style: italic; */
+  font-weight: lighter;
+  line-height: 1.5;
+  text-align: left;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.modal-form .questions h6 {
+  margin: 0;
+  /* display: none; */
+  /* color: red; */
+  font-size: 18px;
+}
+
+.modal-form .questions .question {
+  /* padding-left: 1rem; */
   width: 80%;
+  /* margin: auto; */
+}
+
+.modal-form .questions .question select {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px;
+}
+
+.modal-form .question .options {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 300px;
+}
+
+.modal-form .question .option {
+  margin: 10px 0;
+}
+
+.modal-option {
+  background-color: #fff;
+  color: #000;
+  font-size: 18px;
+  padding: 20px 0;
+  width: 98%;
+  height: 100px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-option:hover {
+  background-color: #43b66f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-option:click .modal-input {
+  background-color: #fff;
+  color: #000;
+  font-size: 18px;
+  padding: 20px 0;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.featured {
+  flex: 1;
+  text-align: center;
+  height: 400px;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+.feat-h1,
+.feat-h4 {
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+  color: #fff;
+  text-align: center;
+}
+
+.feat-h1 {
+  /* text-decoration: underline; */
+}
+
+.featured-h2 {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.featured h2,
+.steps-title h2 {
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.featured-man {
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  margin: 10px auto;
+  width: 100px;
+}
+
+.feat-h4 {
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  vertical-align: middle;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 0;
+}
+
+.gm-name,
+.gm-nmls {
+  color: #fff;
+  margin: 1rem 0;
+}
+
+.gm-name {
+  margin-bottom: 0;
+}
+
+.gm-nmls {
+  font-size: 1.25rem;
+}
+
+.gm-msg {
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+  font-weight: 200;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: #fff;
 }
 
 .modal-btn {
@@ -125,96 +319,576 @@ main div {
   width: 200px;
 }
 
-.modal-box {
-  /* display: none; */
-  z-index: 1;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 50px 0;
-}
-
-.modal-form {
-  background-color: goldenrod;
-  position: relative;
-  margin: 0 auto;
-  max-width: 50%;
-  animation: animatetop 0.4s;
-}
-
-.modal-form h1 {
-  padding: 25px;
-}
-
-.modal-form .questions {
-  padding: 4rem;
-}
-
-.modal-form .questions h2 {
-  font-family: "Merriweather", "Times New Roman", Times, serif;
-  font-size: 20px;
-  font-weight: 400;
-  margin: 0;
+.modal-open {
+  margin: 2rem 0;
   text-align: left;
+  width: 80%;
 }
 
-.modal-form .questions h3 {
-  font-family: "Merriweather", "Times New Roman", Times, serif;
-  font-weight: 300;
-  font-size: 35px;
-  /* font-style: italic; */
-  font-weight: lighter;
-  line-height: 1.5;
-  text-align: left;
-  margin: 10px 0;
+.questions .checks {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  height: 500px;
+}
+
+.questions .checks .check {
+  display: flex;
+  flex: 1;
+  /* flex-direction: column;
+  align-content: space-between;
+  height: 600px; */
+}
+
+.questions .checks .check h2 {
+  /* display: inline-block; */
+  text-align: center;
+  margin-bottom: 20px;
+  /* flex: 1; */
+}
+
+.questions .checks .check .check-box,
+.questions .checks .check .loading {
+  height: 40px;
+  margin-left: 15px;
+}
+
+.auto-search {
   width: 100%;
-}
-
-.modal-form .questions h5 {
-  font-family: "Merriweather", "Times New Roman", Times, serif;
-  font-weight: 200;
-  font-size: 14px;
-  /* font-style: italic; */
-  font-weight: lighter;
-  line-height: 1.5;
-  text-align: left;
-  margin-top: 10px;
-  width: 100%;
-}
-
-.modal-form .questions .question select {
-  display: block;
-  width: 400px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-.modal-form .question .options {
-  list-style: none;
-  padding: 0;
-}
-
-.modal-form .question .option {
-  margin: 10px 0;
-}
-
-.modal-option {
   background-color: #fff;
   color: #000;
+  font-size: 18px;
   padding: 20px 0;
-  width: 250px;
+  height: 100px;
   border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
+.text-submit {
+  width: 100%;
+  height: 5rem;
+  border-radius: 5px;
+  background-color: #43b66f;
+  color: #fff;
+  margin-top: 1rem;
+  font-size: 20px;
+}
+
+/* ***************** */
+/* ***************** */
+/* ***************** */
+
+/* @media screen and (max-width: 1024px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    margin-left: 5vw;
+  }
+
+  .modal-form {
+    max-width: 85%;
+  }
+
+  .mains {
+    width: 85%;
+  }
+
+  .main-left h2,
+  .main-left h3 {
+    text-align: center;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .headline {
+    margin-top: 35%;
+  }
+
+  .hero {
+    object-fit: cover;
+    object-position: center;
+    height: 300px;
+    bottom: 100px;
+  }
+
+  .bg-circle {
+    left: 150px;
+  }
+} */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    margin: 15px;
+  }
+
+  header div h1 {
+    font-size: 1.75rem;
+  }
+
+  .headline {
+    margin-top: 30%;
+  }
+
+  .modal-form {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .modal-form .questions .question {
+    width: 95%;
+  }
+
+  .mains {
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .main-left h2 {
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .main-left h3 {
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  .main-right {
+    margin: auto;
+  }
+
+  .hero {
+    bottom: 200px;
+  }
+
+  .bg-circle {
+    top: 50px;
+  }
+
+  .modal-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+  #app {
+    margin: auto;
+    width: 70%;
+  }
+
+  .modal-open {
+    width: 50%;
+    margin: 2rem auto;
+  }
+}
+
+@media screen and (min-width: 421px) and (max-width: 540px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    margin: 15px;
+  }
+
+  header div h1 {
+    font-size: 1.75rem;
+  }
+
+  .headline {
+    margin-top: 20%;
+  }
+
+  .modal-form {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .modal-box {
+    padding-top: 75px;
+  }
+
+  .modal-form .questions .question {
+    width: 95%;
+  }
+
+  .mains {
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+
+  .main-left h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .main-left h3 {
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  .hero {
+    object-fit: cover;
+    object-position: center;
+    height: 300px;
+    width: 100%;
+    bottom: 50px;
+  }
+
+  .bg-circle {
+    display: none;
+  }
+
+  .modal-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+  #app {
+    margin: auto;
+    width: 70%;
+  }
+
+  .modal-open {
+    width: 50%;
+    margin: 2rem auto;
+  }
+}
+
+@media screen and (min-width: 371px) and (max-width: 420px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    margin: 5px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header div img {
+    width: 25px;
+  }
+
+  header div h1 {
+    font-size: 1rem;
+  }
+
+  main {
+    margin: 0;
+    margin-bottom: 100px;
+  }
+
+  .mains {
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .headline {
+    margin-top: 5%;
+  }
+
+  .main-left {
+    margin: 1.15em;
+  }
+
+  .main-left h2 {
+    width: 90%;
+    font-size: 2.25rem;
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .main-left h3 {
+    margin-left: 30px;
+    font-style: italic;
+  }
+
+  #app {
+    width: 200px;
+    margin: 2rem auto;
+  }
+
+  .modal-open {
+    margin: 0;
+  }
+
+  .bg-circle {
+    display: none;
+  }
+
+  .hero {
+    object-fit: cover;
+    object-position: center;
+    height: 300px;
+    width: 500px;
+    bottom: 50px;
+  }
+
+  .modal-box {
+    padding-top: 50px;
+  }
+
+  .modal-form {
+    max-width: 90%;
+    /* max-height: 95%; */
+    height: auto;
+  }
+
+  .modal-form .questions h2 {
+    font-size: 24px;
+  }
+
+  .modal-form .questions h3 {
+    font-size: 32px;
+  }
+
+  .modal-form .questions h5 {
+    font-size: 16px;
+  }
+
+  .modal-option {
+    height: 65px;
+  }
+
+  .modal-form .questions {
+  }
+
+  .modal-form .questions .question {
+    width: 90%;
+    /* padding-bottom: 50px; */
+  }
+
+  .modal-form .question .options {
+    display: block;
+  }
+
+  .auto-search {
+    height: auto;
+  }
+
+  .feat-h1 {
+    color: #05582b;
+    font-size: 1.75rem;
+  }
+
+  .feat-h4 {
+    font-size: 1rem;
+  }
+
+  .gm-name {
+    font-size: 1.35rem;
+    font-weight: bolder;
+  }
+
+  .gm-nmls {
+    margin-top: 0;
+    font-size: 0.75rem;
+  }
+
+  footer p {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 370px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    margin: 5px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header div img {
+    width: 25px;
+  }
+
+  header div h1 {
+    font-size: 1rem;
+  }
+
+  main {
+    margin: 0;
+    margin-bottom: 150px;
+  }
+
+  .mains {
+    flex-direction: column;
+    height: 80vh;
+    margin-bottom: 5rem;
+    /* margin: 0 1rem; */
+    width: 100%;
+  }
+
+  .headline {
+    margin-top: 5%;
+  }
+
+  .main-left {
+    margin: 1.15em;
+  }
+
+  .main-left h2 {
+    font-size: 2em;
+    margin: 2rem 1rem;
+    text-align: center;
+  }
+
+  .main-left h3 {
+    margin: 10px auto;
+    font-style: italic;
+    font-size: 15px;
+    width: 80%;
+    text-align: center;
+  }
+
+  .main-right {
+  }
+
+  #app {
+    width: 200px;
+    margin: 1.5rem auto;
+  }
+
+  .modal-open {
+    margin: 0;
+  }
+
+  .bg-circle {
+    display: none;
+  }
+
+  .hero {
+    object-fit: cover;
+    object-position: center;
+    height: 250px;
+    width: 400px;
+    bottom: 50px;
+  }
+
+  .modal-box {
+    padding-top: 40px;
+  }
+
+  .modal-form {
+    max-width: 90%;
+    max-height: 95%;
+    height: auto;
+  }
+
+  .modal-form .questions h2 {
+    font-size: 16px;
+  }
+
+  .modal-form .questions h3 {
+    font-size: 26px;
+    margin: 15px 0;
+    line-height: 1.25;
+  }
+
+  .modal-form .questions h5 {
+    font-size: 12px;
+  }
+
+  .modal-option {
+    height: 60px;
+  }
+
+  .modal-form .questions {
+    /* padding-top: 4rem; */
+  }
+
+  .modal-form .questions .question {
+    width: 90%;
+  }
+
+  .modal-form .question .options {
+    display: block;
+  }
+
+  .auto-search {
+    height: 50px;
+  }
+
+  .text-submit {
+    margin-bottom: 1rem;
+  }
+
+  .questions .checks {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    height: 400px;
+  }
+
+  .questions .checks .check h2 {
+    /* display: inline-block; */
+    text-align: center;
+    margin-bottom: 10px;
+    /* flex: 1; */
+  }
+
+  .feat-h1 {
+    color: #05582b;
+    font-size: 1.75rem;
+  }
+
+  .feat-h4 {
+    font-size: 1rem;
+  }
+
+  .gm-name {
+    font-size: 1.35rem;
+    font-weight: bolder;
+  }
+
+  .gm-nmls {
+    margin-top: 0;
+    font-size: 0.75rem;
+  }
+
+  footer {
+    width: 100%;
+  }
+
+  footer p {
+    font-size: 10px;
+  }
+}
+
+/* ***************END************************** */
+/* ***************** */
+/* ***************** */
+
+/* .modal-form h1 {
+  padding: 25px;
+} */
+
 .modal-close {
-  color: red;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  margin: 5px;
+  color: bisque;
+  margin: 10px;
+  position: absolute;
+  right: 0;
 }
 
 .modal-close:hover,
@@ -224,8 +898,10 @@ main div {
   cursor: pointer;
 }
 
-.auto-search {
+.modal-input {
   width: 100%;
+  height: 50px;
+  border-radius: 5px;
 }
 /* .ap-icon-pin {
   display: none;
@@ -243,8 +919,11 @@ main div {
   background-color: green;
 } */
 .main-right {
-  margin: auto;
-  padding: 50px;
+  flex: 4;
+  /* padding-right: 5rem; */
+  /* margin: auto; */
+  /* padding: 50px; */
+  /* padding-top: 100px; */
 }
 
 .main-ld {
@@ -253,23 +932,8 @@ main div {
   text-decoration-style: dotted;
 }
 
-.bg-circle {
-  background-color: gold;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-}
-
-.hero {
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height: 350px;
-  position: relative;
-  bottom: 250px;
-}
-
 .margin-left {
-  margin-left: 250px;
+  /* margin-left: 10rem; */
 }
 
 .max-width {
@@ -334,53 +998,6 @@ main div {
 .step-one {
   margin-top: 40px;
 }
-.featured {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(207, 221, 233, 1),
-    rgba(255, 255, 255, 0.45)
-  );
-  flex: 1;
-  text-align: center;
-  height: 400px;
-  background-size: cover;
-  padding: 25px;
-  width: 25%;
-  margin: 50px auto;
-}
-
-.featured h2 {
-  margin: 40px auto;
-  text-align: center;
-}
-
-.featured h2,
-.steps-title h2 {
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.featured-man {
-  border-radius: 50%;
-  background-color: #eee;
-  display: flex;
-  margin: 10px auto;
-  width: 100px;
-}
-
-.featured h3 {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.75rem;
-  vertical-align: middle;
-  font-weight: lighter;
-}
-
-.gm-name,
-.gm-nmls {
-  margin: 1rem 0;
-}
 
 .vert-line {
   border-left: 3px solid black;
@@ -426,4 +1043,12 @@ main div {
 
 .start-app .form input {
   width: 200px;
+}
+
+footer p {
+  text-align: center;
+}
+
+.ap-name {
+  color: #000;
 }

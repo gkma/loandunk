@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import Inputs from "./components/Inputs";
 import Checks from "./components/Checks";
@@ -11,13 +12,13 @@ const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [displayChecks, setDisplayChecks] = useState();
   const [displayThankYou, setDisplayThankYou] = useState(false);
-  // const [startQuiz, setStartQuiz] = useState("Take Quiz");
   const [onQuestion, setOnQuestion] = useState(0);
   const [loanType, setLoanType] = useState("");
   const [sequence, setSequence] = useState([]);
   const [prompt, setPrompt] = useState();
   const [userProgress, setUserProgress] = useState({});
 
+  // User exits form
   useEffect(() => {
     const handleEscape = (ev) => {
       if (ev.key === "Escape") setDisplayModal(false);
@@ -28,6 +29,7 @@ const App = () => {
     return () => window.removeEventListener("keyup", handleEscape);
   }, []);
 
+  // Prefill answer if user selects REFI
   useEffect(() => {
     const firstQuestion = flowSequence(loanType)[0];
     setPrompt(firstQuestion);
@@ -43,18 +45,27 @@ const App = () => {
     }
   }, [loanType]);
 
+  // Set, save, and submit form
   useEffect(() => {
+    async function submitForm() {
+      try {
+        const response = await axios.post("/submit", userProgress);
+        console.log({ response });
+      } catch (err) {
+        console.warn(err.message);
+      }
+    }
+
     if (onQuestion === 1) {
       const type = ["buy", "refi"][userProgress[1].i];
       setLoanType(type);
       setSequence(flowSequence(type));
-      // setStartQuiz("Resume Quiz");
     }
-    // else if (onQuestion === 20) setStartQuiz("See Your Match");
 
     if (onQuestion === 22) {
       setPrompt(null);
       setDisplayChecks(true);
+      submitForm();
     }
   }, [onQuestion, userProgress]);
 
@@ -93,8 +104,6 @@ const App = () => {
         i,
       },
     });
-
-    console.log({ userProgress });
   }
 
   function showNext() {
@@ -133,7 +142,6 @@ const App = () => {
                     <h2>Question {onQuestion + 1} of 22</h2>
                     <h3>{prompt.question}</h3>
                     <h5>{prompt.subtext}</h5>
-                    {/* <h6 className="error-default">Please select an option</h6> */}
                     <Inputs
                       content={{
                         type: prompt.type,
