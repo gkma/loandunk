@@ -1,0 +1,7 @@
+[build]
+  functions = "functions-build"
+
+[[redirects]]
+  from = '/submit'
+  to = '/.netlify/functions/submit'
+  status = 200

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "build:functions": "cd ./functions-build/sendMail",
     "dev:client": "webpack serve",
     "dev:server": "nodemon ./src/server/index.js"
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/gkma/loandunk#readme",
   "dependencies": {
+    "@netlify/zip-it-and-ship-it": "^1.7.0",
     "algolia-places-react": "^1.6.1",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
