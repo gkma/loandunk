@@ -21,9 +21,9 @@ exports.handler = async (event) => {
   const csv = parse(data, options);
 
   const mailOptions = {
-    from: "loandunkmortgageservices@gmail.com",
-    to: "garron@equitysmartloans.com",
-    subject: "Inquiry from LoanDunk.com",
+    from: process.env.EMAIL_SENDER,
+    to: process.env.EMAIL_RECEIVER,
+    subject: "New inquiry from LoanDunk.com",
     text: "See attached CSV.",
     attachments: [
       {

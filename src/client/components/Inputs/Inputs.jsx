@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AlgoliaPlaces from "algolia-places-react";
 
+const process = require("process");
+
 const Inputs = ({ content, onSelect }) => {
   const [selected, setSelected] = useState(undefined);
   const [errors, setErrors] = useState({
@@ -44,8 +46,8 @@ const Inputs = ({ content, onSelect }) => {
                 <AlgoliaPlaces
                   placeholder="Enter location here."
                   options={{
-                    appId: "plZEVQE867P4",
-                    apiKey: "031a6f11a85781789390cc4bf2f699e3",
+                    appId: process.env.PLACES_APP_ID,
+                    apiKey: process.env.PLACES_API_KEY,
                   }}
                   onChange={({ suggestion }) => setLocation(suggestion.value)}
                 />
