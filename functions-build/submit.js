@@ -14,7 +14,7 @@ const auth = {
 
 const transporter = nodemailer.createTransport(mailGun(auth));
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event) => {
   const data = Object.values(JSON.parse(event.body));
   const fields = ["question", "answer"];
   const options = { fields };
@@ -35,8 +35,9 @@ exports.handler = async (event, context, callback) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    callback(null, { statusCode: 200, body: "Email sent successfully." });
+    return { statusCode: 200, body: "Email sent successfully." };
   } catch (error) {
-    return console.log(error);
+    console.log(error);
+    return { statusCode: 500, body: "Email failed." };
   }
 };
