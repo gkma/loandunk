@@ -49,7 +49,7 @@ const App = () => {
   useEffect(() => {
     async function submitForm() {
       try {
-        await axios.post("/submit", userProgress);
+        await axios.post("/api/submit", userProgress);
       } catch (err) {
         console.warn(err.message);
       }
