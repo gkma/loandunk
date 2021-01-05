@@ -13,9 +13,9 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "build"),
     // historyApiFallback: true,
+    // publicPath: "/",
     hot: true,
     open: true,
-    // publicPath: "/",
   },
 
   devtool: "source-map",
