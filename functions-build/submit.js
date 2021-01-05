@@ -7,14 +7,14 @@ const { parse } = require("json2csv");
 
 const auth = {
   auth: {
-    api_key: process.env.MAILGUN_API_KEY,
+    apiKey: process.env.MAILGUN_API_KEY,
     domain: process.env.MAILGUN_DOMAIN,
   },
 };
 
 const transporter = nodemailer.createTransport(mailGun(auth));
 
-exports.handler = async (event) => {
+exports.handler = async (event, context, callback) => {
   const data = Object.values(JSON.parse(event.body));
   const fields = ["question", "answer"];
   const options = { fields };
@@ -35,8 +35,8 @@ exports.handler = async (event) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    return { statusCode: 200, body: "Email sent successfully." };
+    callback(null, { statusCode: 200, body: "Email sent successfully." });
   } catch (error) {
-    return { statusCode: 500, body: { error } };
+    return console.log(error);
   }
 };
