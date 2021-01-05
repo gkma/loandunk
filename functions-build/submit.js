@@ -5,6 +5,11 @@ const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
 const { parse } = require("json2csv");
 
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
 const auth = {
   auth: {
     apiKey: process.env.MAILGUN_API_KEY,
@@ -33,19 +38,19 @@ exports.handler = (event, context, callback) => {
     ],
   };
 
-  try {
-    transporter.sendMail(mailOptions, (error) => {
-      if (error) {
-        callback(error);
-      } else {
-        callback(null, {
-          statusCode: 200,
-          body: "Ok",
-        });
-      }
-    });
-  } catch (error) {
-    console.log(error);
-    return { statusCode: 500, body: "Email failed." };
-  }
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      callback(null, {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify(error),
+      });
+    } else {
+      callback(null, {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify(info),
+      });
+    }
+  });
 };
