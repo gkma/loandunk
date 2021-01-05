@@ -1,8 +1,7 @@
 require("dotenv").config();
 
 const process = require("process");
-const nodemailer = require("nodemailer");
-const mailGun = require("nodemailer-mailgun-transport");
+const mailgun = require("mailgun-js");
 const { parse } = require("json2csv");
 
 const headers = {
@@ -11,13 +10,11 @@ const headers = {
 };
 
 const auth = {
-  auth: {
-    apiKey: process.env.MAILGUN_API_KEY,
-    domain: process.env.MAILGUN_DOMAIN,
-  },
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN,
 };
 
-const transporter = nodemailer.createTransport(mailGun(auth));
+const mg = mailgun({ ...auth });
 
 exports.handler = (event, context, callback) => {
   const data = Object.values(JSON.parse(event.body));
@@ -26,7 +23,7 @@ exports.handler = (event, context, callback) => {
   const csv = parse(data, options);
 
   const mailOptions = {
-    from: process.env.EMAIL_SENDER,
+    from: `Loan Dunk <${process.env.EMAIL_SENDER}>`,
     to: process.env.EMAIL_RECEIVER,
     subject: "New inquiry from LoanDunk.com",
     text: "See attached CSV.",
@@ -38,7 +35,7 @@ exports.handler = (event, context, callback) => {
     ],
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
+  mg.messages().send(mailOptions, (error, info) => {
     if (error) {
       callback(null, {
         statusCode: 500,
