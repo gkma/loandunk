@@ -49,8 +49,7 @@ const App = () => {
   useEffect(() => {
     async function submitForm() {
       try {
-        const response = await axios.post("/submit", userProgress);
-        console.log({ response });
+        await axios.post("/submit", userProgress);
       } catch (err) {
         console.warn(err.message);
       }

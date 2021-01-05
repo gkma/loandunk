@@ -19,7 +19,7 @@ module.exports = {
   },
 
   devtool: "source-map",
-  mode: "development",
+  mode: "production",
 
   module: {
     rules: [
