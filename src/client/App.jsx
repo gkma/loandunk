@@ -52,6 +52,7 @@ const App = () => {
         await axios.post("/api/submit", userProgress);
       } catch (error) {
         if (error.response) {
+          console.log("Error in response...");
           /*
            * The request was made and the server responded with a
            * status code that falls out of the range of 2xx
@@ -60,6 +61,7 @@ const App = () => {
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request) {
+          console.log("Error in request...");
           /*
            * The request was made but no response was received, `error.request`
            * is an instance of XMLHttpRequest in the browser and an instance
@@ -68,7 +70,8 @@ const App = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request and triggered an Error
-          console.log("Error", error.message);
+          console.log("Error in setup...");
+          console.log(error.message);
         }
         console.log(error);
       }

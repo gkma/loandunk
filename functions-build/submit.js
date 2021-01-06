@@ -11,7 +11,7 @@ const { parse } = require("json2csv");
 
 const auth = {
   auth: {
-    apiKey: process.env.MAILGUN_API_KEY,
+    api_key: process.env.MAILGUN_API_KEY,
     domain: process.env.MAILGUN_DOMAIN,
   },
 };
@@ -20,8 +20,8 @@ const transporter = nodemailer.createTransport(mailgun(auth));
 
 function sendMail(csv, callback) {
   const mailOptions = {
-    from: `Loan Dunk <${process.env.EMAIL_SENDER}>`,
-    to: process.env.EMAIL_RECEIVER,
+    from: `Loan Dunk <${process.env.EMAIL_FROM}>`,
+    to: process.env.EMAIL_TO,
     subject: "New inquiry from LoanDunk.com",
     text: "See attached CSV.",
     attachments: [
