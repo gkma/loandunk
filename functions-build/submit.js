@@ -1,12 +1,13 @@
-require("dotenv").config();
 const sendGridClient = require("@sendgrid/mail");
 
-sendGridClient.setApiKey(process.env.SENDGRID_API_KEY);
-
 exports.handler = (event, context, callback) => {
+  const { EMAIL_FROM, EMAIL_TO, SENDGRID_API_KEY } = process.env;
+
+  sendGridClient.setApiKey(SENDGRID_API_KEY);
+
   const msg = {
-    to: process.env.EMAIL_TO,
-    from: process.env.EMAIL_FROM,
+    to: EMAIL_TO,
+    from: EMAIL_FROM,
     subject: "Sending with SendGrid is Fun",
     text: "and easy to do anywhere, even with Node.js",
     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
