@@ -1,16 +1,30 @@
 const sendGridClient = require("@sendgrid/mail");
+const { parse } = require("json2csv");
 
 exports.handler = (event, context, callback) => {
   const { EMAIL_FROM, EMAIL_TO, SENDGRID_API_KEY } = process.env;
 
   sendGridClient.setApiKey(SENDGRID_API_KEY);
 
+  const raw = Object.values(JSON.parse(event.body));
+  const fields = ["question", "answer"];
+  const options = { fields };
+  const csv = parse(raw, options);
+
+  const buff = Buffer.from(csv);
+  const csv64 = buff.toString("base64");
+
   const msg = {
     to: EMAIL_TO,
     from: EMAIL_FROM,
-    subject: "Sending with SendGrid is Fun",
-    text: "and easy to do anywhere, even with Node.js",
-    html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+    subject: "New inquiry from LoanDunk.com",
+    text: "See attached CSV.",
+    attachments: [
+      {
+        filename: "inquiry.csv",
+        content: csv64,
+      },
+    ],
   };
 
   sendGridClient
