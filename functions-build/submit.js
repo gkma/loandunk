@@ -11,20 +11,21 @@ const mailgun = require("mailgun-js");
 
 const apiKey = process.env.MAILGUN_API_KEY;
 const domain = process.env.MAILGUN_DOMAIN;
+const url = process.env.MAILGUN_URL;
 
-const mg = mailgun({ apiKey, domain });
+const mg = mailgun({ apiKey, domain, url });
 
 const data = {
   from: `Loan Dunk <${process.env.EMAIL_FROM}>`,
   to: process.env.EMAIL_TO,
   subject: "New inquiry from LoanDunk.com",
   text: "See attached CSV.",
-  "h:username": "api",
-  "h:password": apiKey,
+  // "h:username": "api",
+  // "h:password": apiKey,
 };
 
 exports.handler = (event, context, callback) => {
-  if (event.httpMethod === "POST" && event.path === "/api/submit") {
+  if (event.httpMethod === "POST") {
     mg.messages().send(data, (error, body) => {
       if (error) {
         console.log("Error at sendMail: ", error);
