@@ -49,7 +49,7 @@ const App = () => {
   useEffect(() => {
     async function submitForm() {
       try {
-        await axios.post("/.netlify/functions/submit", userProgress);
+        await axios.post("/api/submit", userProgress);
       } catch (error) {
         if (error.response) {
           console.log("Error in response...");

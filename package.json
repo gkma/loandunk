@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/gkma/loandunk#readme",
   "dependencies": {
-    "@netlify/zip-it-and-ship-it": "^1.7.0",
+    "@sendgrid/mail": "^7.4.0",
     "algolia-places-react": "^1.6.1",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
