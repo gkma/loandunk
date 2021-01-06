@@ -1,6 +1,10 @@
 require("dotenv").config();
 
-const mailgun = require("mailgun-js");
+const apiKey = process.env.MAILGUN_API_KEY;
+const domain = process.env.MAILGUN_DOMAIN;
+const url = process.env.MAILGUN_URL;
+
+const mailgun = require("mailgun-js")({ apiKey, domain, url });
 // const { parse } = require("json2csv");
 
 // const headers = {
@@ -8,12 +12,6 @@ const mailgun = require("mailgun-js");
 // "Access-Control-Allow-Origin": "*",
 // "Access-Control-Allow-Headers": "Content-Type",
 // };
-
-const apiKey = process.env.MAILGUN_API_KEY;
-const domain = process.env.MAILGUN_DOMAIN;
-const url = process.env.MAILGUN_URL;
-
-const mg = mailgun({ apiKey, domain, url });
 
 const data = {
   from: `Loan Dunk <${process.env.EMAIL_FROM}>`,
@@ -26,7 +24,7 @@ const data = {
 
 exports.handler = (event, context, callback) => {
   if (event.httpMethod === "POST") {
-    mg.messages().send(data, (error, body) => {
+    mailgun.messages().send(data, (error, body) => {
       if (error) {
         console.log("Error at sendMail: ", error);
         callback(null, {
