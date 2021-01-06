@@ -83,14 +83,14 @@ exports.handler = async (event) => {
     //   .then((data) => ({ statusCode: 200, body: JSON.stringify(data) }))
     //   .catch((error) => ({ statusCode: 500, body: JSON.stringify(error) }));
 
-    const response = await mailgun.messages().send(mailData);
+    const response = await mailgun.messages().send(mailData, (error, body) => {
+      if (error) console.log({ error });
+      else console.log({ body });
+    });
     if (response.id) {
       return { statusCode: 200, body: JSON.stringify(response) };
     }
-    return {
-      statusCode: 500,
-      body: "Error on mailgun send",
-    };
+
     // .then((response) => response.json())
     // .then((data) => ({ statusCode: 200, body: JSON.stringify(data) }))
     // .catch((error) => ({ statusCode: 500, body: JSON.stringify(error) }));
@@ -108,4 +108,8 @@ exports.handler = async (event) => {
     //   };
     // });
   }
+  return {
+    statusCode: 500,
+    body: "Error on mailgun send",
+  };
 };
