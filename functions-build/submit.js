@@ -84,14 +84,19 @@ exports.handler = (event) => {
     //   .catch((error) => ({ statusCode: 500, body: JSON.stringify(error) }));
 
     mailgun.messages().send(mailData, (error, body) => {
-      if (error)
+      if (error) {
+        console.log("Error on mailgun send.");
+        console.log({ error });
         return {
           statusCode: 500,
-          body: `Error on send: ${JSON.stringify(error)}`,
+          body: JSON.stringify(error),
         };
+      }
+      console.log("Success on mailgun send.");
+      console.log({ body });
       return {
         statusCode: 200,
-        body: `Success on send: ${JSON.stringify(body)}`,
+        body: JSON.stringify(body),
       };
     });
 
