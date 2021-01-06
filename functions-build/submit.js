@@ -9,7 +9,7 @@ const auth = {
     api_key: process.env.MAILGUN_API_KEY,
     domain: process.env.MAILGUN_DOMAIN,
     user: "api",
-    password: process.env.MAILGUN_API_KEY,
+    pass: process.env.MAILGUN_API_KEY,
   },
 };
 
