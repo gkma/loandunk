@@ -19,6 +19,8 @@ const data = {
   to: process.env.EMAIL_TO,
   subject: "New inquiry from LoanDunk.com",
   text: "See attached CSV.",
+  "h:username": "api",
+  "h:password": apiKey,
 };
 
 exports.handler = (event, context, callback) => {
