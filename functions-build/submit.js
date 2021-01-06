@@ -11,16 +11,17 @@ const {
   EMAIL_TO,
 } = process.env;
 
-const mailgun = require("mailgun-js")({
-  apiKey: MAILGUN_API_KEY,
-  domain: MAILGUN_DOMAIN,
-  // url: MAILGUN_URL
-});
+const mailgun = require("mailgun.js");
+
+const mg = mailgun.client({ username: "api", key: MAILGUN_API_KEY });
 
 // const auth = {
 //   auth: {
 //     api_key: process.env.MAILGUN_API_KEY,
 //     domain: process.env.MAILGUN_DOMAIN,
+// "h:Authorization": `Basic ${Buffer.from(`api${MAILGUN_API_KEY}`).toString(
+//   "base64"
+// )}`,
 //   },
 // };
 
@@ -56,7 +57,7 @@ const mailgun = require("mailgun-js")({
 //   });
 // }
 
-exports.handler = (event) => {
+exports.handler = async (event) => {
   if (event.httpMethod === "POST") {
     // const raw = Object.values(JSON.parse(event.body));
     // const fields = ["question", "answer"];
@@ -64,17 +65,12 @@ exports.handler = (event) => {
     // const csv = parse(raw, options);
     // sendMail(csv, callback);
 
-    const mailData = {
+    const data = {
       from: EMAIL_FROM,
       to: EMAIL_TO,
-      "h:Authorization": `Basic ${Buffer.from(`api${MAILGUN_API_KEY}`).toString(
-        "base64"
-      )}`,
       subject: "New inquiry from LoanDunk.com",
       text: "See attached CSV.",
     };
-
-    console.log({ mailData });
 
     // return mailgun
     //   .messages()
@@ -83,22 +79,28 @@ exports.handler = (event) => {
     //   .then((data) => ({ statusCode: 200, body: JSON.stringify(data) }))
     //   .catch((error) => ({ statusCode: 500, body: JSON.stringify(error) }));
 
-    mailgun.messages().send(mailData, (error, body) => {
-      if (error) {
-        console.log("Error on mailgun send.");
-        console.log({ error });
-        return {
-          statusCode: 500,
-          body: JSON.stringify(error),
-        };
-      }
-      console.log("Success on mailgun send.");
-      console.log({ body });
-      return {
-        statusCode: 200,
-        body: JSON.stringify(body),
-      };
-    });
+    mg.messages
+      .create(MAILGUN_DOMAIN, data)
+      .then((message) => console.log({ message }))
+      .catch((error) => console.log({ error }));
+
+    return { statusCode: 200 };
+    // mailgun.messages().send(mailData, (error, body) => {
+    //   if (error) {
+    //     console.log("Error on mailgun send.");
+    //     console.log({ error });
+    //     return {
+    //       statusCode: 500,
+    //       body: JSON.stringify(error),
+    //     };
+    //   }
+    //   console.log("Success on mailgun send.");
+    //   console.log({ body });
+    //   return {
+    //     statusCode: 200,
+    //     body: JSON.stringify(body),
+    //   };
+    // });
 
     // .then((response) => response.json())
     // .then((data) => ({ statusCode: 200, body: JSON.stringify(data) }))
