@@ -8,8 +8,6 @@ import Inputs from "./components/Inputs";
 import Checks from "./components/Checks";
 import flowSequence from "./data/sequence";
 
-require("dotenv").config();
-
 const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [displayChecks, setDisplayChecks] = useState();
@@ -51,12 +49,7 @@ const App = () => {
   useEffect(() => {
     async function submitForm() {
       try {
-        await axios.post("/api/submit", userProgress, {
-          auth: {
-            username: "api",
-            password: process.env.MAILGUN_API_KEY,
-          },
-        });
+        await axios.post("/api/submit", userProgress);
       } catch (error) {
         if (error.response) {
           console.log("Error in response...");
