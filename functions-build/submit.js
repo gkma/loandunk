@@ -56,7 +56,7 @@ const mailgun = require("mailgun-js")({
 //   });
 // }
 
-exports.handler = async (event) => {
+exports.handler = (event) => {
   if (event.httpMethod === "POST") {
     // const raw = Object.values(JSON.parse(event.body));
     // const fields = ["question", "answer"];
@@ -83,14 +83,18 @@ exports.handler = async (event) => {
     //   .then((data) => ({ statusCode: 200, body: JSON.stringify(data) }))
     //   .catch((error) => ({ statusCode: 500, body: JSON.stringify(error) }));
 
-    const response = await mailgun.messages().send(mailData, (error, body) => {
-      if (error) console.log({ error });
-      else console.log({ body });
+    mailgun.messages().send(mailData, (error, body) => {
+      if (error)
+        return {
+          statusCode: 500,
+          body: `Error on send: ${JSON.stringify(error)}`,
+        };
+      return {
+        statusCode: 200,
+        body: `Success on send: ${JSON.stringify(body)}`,
+      };
     });
-    if (!response) {
-      return { statusCode: 500, body: "Error on mailgun send" };
-    }
-    return { statusCode: 200, body: JSON.stringify(response.id) };
+
     // .then((response) => response.json())
     // .then((data) => ({ statusCode: 200, body: JSON.stringify(data) }))
     // .catch((error) => ({ statusCode: 500, body: JSON.stringify(error) }));
