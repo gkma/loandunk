@@ -87,10 +87,10 @@ exports.handler = async (event) => {
       if (error) console.log({ error });
       else console.log({ body });
     });
-    if (response.id) {
-      return { statusCode: 200, body: JSON.stringify(response) };
+    if (!response) {
+      return { statusCode: 500, body: "Error on mailgun send" };
     }
-
+    return { statusCode: 200, body: JSON.stringify(response.id) };
     // .then((response) => response.json())
     // .then((data) => ({ statusCode: 200, body: JSON.stringify(data) }))
     // .catch((error) => ({ statusCode: 500, body: JSON.stringify(error) }));
@@ -109,7 +109,7 @@ exports.handler = async (event) => {
     // });
   }
   return {
-    statusCode: 500,
-    body: "Error on mailgun send",
+    statusCode: 405,
+    body: "Method is not allowed",
   };
 };
