@@ -232,7 +232,7 @@ main {
 .featured {
   flex: 1;
   text-align: center;
-  height: 400px;
+  /* height: 400px; */
   background-size: cover;
   margin: 0 auto;
 }
@@ -262,11 +262,11 @@ main {
 }
 
 .featured-man {
-  border-radius: 50%;
-  background-color: #eee;
-  display: flex;
-  margin: 10px auto;
-  width: 100px;
+  /* border-radius: 50%; */
+  /* background-color: #eee; */
+  /* display: flex; */
+  /* margin: 10px auto; */
+  /* width: 100px; */
 }
 
 .feat-h4 {
@@ -427,6 +427,10 @@ main {
     width: 700px;
     bottom: 100px;
   }
+
+  .loan-me {
+    width: 30%;
+  }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1239px) {
@@ -436,6 +440,14 @@ main {
     height: 300px;
     width: 550px;
     bottom: 100px;
+  }
+
+  .mains {
+    width: 80%;
+  }
+
+  .loan-me {
+    width: 35%;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -504,6 +516,10 @@ main {
   .modal-open {
     width: 50%;
     margin: 2rem auto;
+  }
+
+  .loan-me {
+    width: 30%;
   }
 }
 
@@ -578,6 +594,10 @@ main {
   .modal-open {
     width: 50%;
     margin: 2rem auto;
+  }
+
+  .loan-me {
+    width: 35%;
   }
 }
 
@@ -701,6 +721,10 @@ main {
   .feat-h1 {
     color: #05582b;
     font-size: 1.75rem;
+  }
+
+  .loan-me {
+    width: 35%;
   }
 
   .feat-h4 {
@@ -871,6 +895,10 @@ main {
     font-size: 1.75rem;
   }
 
+  .loan-me {
+    width: 40%;
+  }
+
   .feat-h4 {
     font-size: 1rem;
   }
@@ -1026,7 +1054,8 @@ main {
 }
 
 .loan-me {
-  max-width: 100px;
+  background: white;
+  border-radius: 50%;
 }
 
 .start-app {
