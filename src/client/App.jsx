@@ -18,7 +18,7 @@ const App = () => {
   const [prompt, setPrompt] = useState();
   const [userProgress, setUserProgress] = useState({});
 
-  // User exits form
+  // User exits form using ESC
   useEffect(() => {
     const handleEscape = (ev) => {
       if (ev.key === "Escape") setDisplayModal(false);
@@ -29,7 +29,7 @@ const App = () => {
     return () => window.removeEventListener("keyup", handleEscape);
   }, []);
 
-  // Preanswer QUESTION #14 if user selects REFI
+  // Prefill #14 answer if user selects REFI option
   useEffect(() => {
     const firstQuestion = flowSequence(loanType)[0];
     setPrompt(firstQuestion);
@@ -51,28 +51,6 @@ const App = () => {
       try {
         await axios.post("/api/submit", userProgress);
       } catch (error) {
-        if (error.response) {
-          console.log("Error in response...");
-          /*
-           * The request was made and the server responded with a
-           * status code that falls out of the range of 2xx
-           */
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log("Error in request...");
-          /*
-           * The request was made but no response was received, `error.request`
-           * is an instance of XMLHttpRequest in the browser and an instance
-           * of http.ClientRequest in Node.js
-           */
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request and triggered an Error
-          console.log("Error in setup...");
-          console.log(error.message);
-        }
         console.log(error);
       }
     }
@@ -186,7 +164,7 @@ const App = () => {
                       />
                     </div>
                     <h4 className="feat-h4 gm-name">Garron Ma</h4>
-                    <h4 className="feat-h4 gm-nmls">NMLS #1969903</h4>
+                    <h4 className="feat-h4 gm-nmls">Equity Smart Home Loans</h4>
                     <h6 className="gm-msg">
                       &quot;I&apos;m thrilled to partner with you. Let&apos;s
                       get to work!&quot;
