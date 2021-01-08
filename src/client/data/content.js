@@ -172,10 +172,10 @@ const formContent = {
   },
   16: {
     order: 16,
-    question: "Have you filed for bankrupty in the past two years?",
+    question: "Have you filed for bankruptcy in the past two years?",
     type: "button",
     subtext: "",
-    options: ["Yes", "No"],
+    options: ["No", "Yes"],
   },
   17: {
     order: 17,
